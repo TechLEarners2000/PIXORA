@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Deep space theme with cyan accents */
+    --background: 220 40% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 35% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 35% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 220 50% 25%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 25% 20%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 190 80% 55%;
+    --accent-foreground: 220 40% 10%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 30% 20%;
+    --input: 220 30% 18%;
+    --ring: 190 80% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --glow: 190 80% 55%;
+    --glow-strong: 190 90% 65%;
+    --glass-border: 220 40% 30%;
+    --glass-bg: 220 35% 12%;
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(var(--glow) / 0.3);
+    --shadow-card: 0 8px 32px hsl(220 40% 4% / 0.6);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card border border-glass-border backdrop-blur-sm;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--glow) / 0.5);
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 20px hsl(var(--glow) / 0.3), inset 0 0 20px hsl(var(--glow) / 0.1);
+  }
+  
+  .hover-glow {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: hsl(var(--glow));
+  }
+}
